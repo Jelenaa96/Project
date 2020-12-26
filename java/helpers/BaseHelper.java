@@ -1,0 +1,21 @@
+package helpers;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BaseHelper
+{
+    protected static WebDriver driver = new ChromeDriver();
+    protected static WebDriverWait wdWait = new WebDriverWait(driver, 40);
+    protected static JavascriptExecutor js = (JavascriptExecutor ) driver;
+
+
+    public static WebElement returnElementAttValue(String attributeName, String attributeValue)
+    {
+        String selector = "["+ attributeName + "=" + attributeValue +"]";
+        WebElement element = driver.findElement(By.cssSelector(selector));
+        return  element;
+    }
+}
